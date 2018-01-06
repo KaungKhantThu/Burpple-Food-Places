@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_hero_img"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:fitsSystemWindows="true" />
+
+            <xyz.kkt.burpplefoodplaces.components.PageIndicatorView
+                android:id="@+id/piv_hero_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/margin_medium_2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/lbl_burpple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:shadowColor="@color/black_full"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+                    android:text="Burpple"
+                    android:textColor="@color/white_full"
+                    android:textSize="@dimen/text_regular_3x" />
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lbl_burpple" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/lbl_featured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_xxlarge"
+                android:text="@string/featured"
+                android:textColor="@color/primary_text" />
+
+            <TextView
+                android:id="@+id/lbl_promotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/lbl_featured"
+                android:layout_below="@id/lbl_featured"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/promotions"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/lbl_see_more_promotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/lbl_promotions"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/see_more"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_promotion_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_see_more_promotions" />
+
+            <TextView
+                android:id="@+id/lbl_latest_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/lbl_featured"
+                android:layout_below="@id/rv_promotion_list"
+                android:layout_marginTop="@dimen/margin_top_for_lbl"
+                android:text="@string/latest"
+                android:textColor="@color/primary_text" />
+
+            <TextView
+                android:id="@+id/lbl_burpple_guides"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/lbl_featured"
+                android:layout_below="@id/lbl_latest_guide"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/burpple_guides"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/lbl_see_more_guides"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/lbl_burpple_guides"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/see_more"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_guide_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_see_more_guides" />
+
+            <TextView
+                android:id="@+id/lbl_latest_new_and_trending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/lbl_featured"
+                android:layout_below="@id/rv_guide_list"
+                android:layout_marginTop="@dimen/margin_top_for_lbl"
+                android:text="@string/latest"
+                android:textColor="@color/primary_text" />
+
+            <TextView
+                android:id="@+id/lbl_burpple_new_and_trending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/lbl_featured"
+                android:layout_below="@id/lbl_latest_new_and_trending"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/burpple_new_and_trending"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/lbl_see_more_new_and_trending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/lbl_burpple_new_and_trending"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/see_more"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_new_and_trending_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/lbl_see_more_new_and_trending" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
