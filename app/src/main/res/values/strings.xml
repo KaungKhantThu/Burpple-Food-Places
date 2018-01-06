@@ -8,4 +8,7 @@
     <string name="see_more">See More</string>
     <string name="burpple_new_and_trending"><![CDATA[New & Trending]]></string>
     <string name="newly_opened">Newly Opened</string>
+    <string name="explore">Explore</string>
+    <string name="explore_neighbourhoods">Explore Neighbourhoods</string>
+    <string name="explore_categories">Explore Categories</string>
 </resources>

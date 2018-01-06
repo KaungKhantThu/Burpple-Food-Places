@@ -33,5 +33,7 @@
 
     <!--App Specific values-->
     <dimen name="margin_top_for_lbl">80dp</dimen>
+    <dimen name="maring_bottom_for_search_box">80dp</dimen>
+    <dimen name="height_for_search_box">40dp</dimen>
 
 </resources>

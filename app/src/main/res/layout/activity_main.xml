@@ -8,19 +8,20 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="256dp"
+            android:layout_height="300dp"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="Burpple">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_hero_img"
                 android:layout_width="match_parent"
-                android:layout_height="256dp"
+                android:layout_height="300dp"
                 android:fitsSystemWindows="true" />
 
             <xyz.kkt.burpplefoodplaces.components.PageIndicatorView
@@ -48,18 +49,24 @@
                     android:textColor="@color/white_full"
                     android:textSize="@dimen/text_regular_3x" />
 
-                <EditText
-                    android:id="@+id/et_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/lbl_burpple" />
-
             </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin">
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <TextView
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_for_search_box"
+                    android:layout_marginLeft="@dimen/margin_card_medium_2"
+                    android:layout_marginRight="@dimen/margin_card_medium_2"
+                    android:background="@drawable/search_box_effect"
+                    android:drawableLeft="@drawable/ic_search_24dp"
+                    android:hint="Find your food place" />
 
             </android.support.v7.widget.Toolbar>
 
@@ -192,6 +199,39 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/lbl_see_more_new_and_trending" />
+
+            <TextView
+                android:id="@+id/btn_explore_neighbourhoods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_new_and_trending_list"
+                android:layout_marginBottom="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_3"
+                android:background="@drawable/divider_margin_horizontal_line"
+                android:drawableLeft="@drawable/ic_location_on_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:paddingLeft="@dimen/margin_medium_2"
+                android:paddingTop="@dimen/margin_medium_2"
+                android:text="@string/explore_neighbourhoods"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/btn_explore_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_explore_neighbourhoods"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:background="@drawable/divider_margin_horizontal_line"
+                android:drawableBottom="@drawable/divider_margin_horizontal_line"
+                android:drawableLeft="@drawable/ic_restaurant_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:paddingLeft="@dimen/margin_medium_2"
+                android:paddingTop="@dimen/margin_medium_2"
+                android:text="@string/explore_categories"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
 
         </RelativeLayout>
 
