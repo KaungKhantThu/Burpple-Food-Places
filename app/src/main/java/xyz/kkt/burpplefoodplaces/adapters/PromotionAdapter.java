@@ -7,21 +7,17 @@ import android.view.ViewGroup;
 
 import xyz.kkt.burpplefoodplaces.R;
 import xyz.kkt.burpplefoodplaces.data.vos.FoodVO;
+import xyz.kkt.burpplefoodplaces.data.vos.PromotionVO;
 import xyz.kkt.burpplefoodplaces.viewholders.PromotionViewHolder;
 
 /**
  * Created by Lenovo on 1/5/2018.
  */
 
-public class PromotionAdapter extends BaseRecycleAdapter<PromotionViewHolder, FoodVO> {
+public class PromotionAdapter extends BaseRecycleAdapter<PromotionViewHolder, PromotionVO> {
 
     public PromotionAdapter(Context context) {
         super(context);
-    }
-
-    @Override
-    public void onBindViewHolder(PromotionViewHolder holder, int position) {
-
     }
 
     @Override
@@ -30,8 +26,4 @@ public class PromotionAdapter extends BaseRecycleAdapter<PromotionViewHolder, Fo
         return new PromotionViewHolder(promotionItemView);
     }
 
-    @Override
-    public int getItemCount() {
-        return 5;
-    }
 }

@@ -74,167 +74,216 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_xxlarge">
 
-            <TextView
-                android:id="@+id/lbl_featured"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_medium_2"
-                android:layout_marginTop="@dimen/margin_xxlarge"
-                android:text="@string/featured"
-                android:textColor="@color/primary_text" />
-
-            <TextView
-                android:id="@+id/lbl_promotions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/lbl_featured"
-                android:layout_below="@id/lbl_featured"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="@string/promotions"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/text_regular_3x" />
-
-            <TextView
-                android:id="@+id/lbl_see_more_promotions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/lbl_promotions"
-                android:layout_marginRight="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="@string/see_more"
-                android:textColor="@color/accent"
-                android:textSize="@dimen/text_regular_3x" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_promotion_list"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/lbl_see_more_promotions" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/lbl_latest_guide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/lbl_featured"
-                android:layout_below="@id/rv_promotion_list"
-                android:layout_marginTop="@dimen/margin_top_for_lbl"
-                android:text="@string/latest"
-                android:textColor="@color/primary_text" />
+                <TextView
+                    android:id="@+id/lbl_featured"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium_2"
+                    android:layout_marginTop="@dimen/margin_xxlarge"
+                    android:text="@string/featured"
+                    android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/lbl_burpple_guides"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/lbl_featured"
-                android:layout_below="@id/lbl_latest_guide"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="@string/burpple_guides"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/text_regular_3x" />
+                <TextView
+                    android:id="@+id/lbl_promotions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/lbl_featured"
+                    android:layout_below="@id/lbl_featured"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/promotions"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_regular_3x" />
 
-            <TextView
-                android:id="@+id/lbl_see_more_guides"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/lbl_burpple_guides"
-                android:layout_marginRight="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="@string/see_more"
-                android:textColor="@color/accent"
-                android:textSize="@dimen/text_regular_3x" />
+                <TextView
+                    android:id="@+id/lbl_see_more_promotions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/lbl_promotions"
+                    android:layout_marginRight="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/see_more"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/text_regular_3x" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_guide_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/lbl_see_more_guides" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_promotion_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lbl_see_more_promotions" />
 
-            <TextView
-                android:id="@+id/lbl_latest_new_and_trending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/lbl_featured"
-                android:layout_below="@id/rv_guide_list"
-                android:layout_marginTop="@dimen/margin_top_for_lbl"
-                android:text="@string/latest"
-                android:textColor="@color/primary_text" />
+                <TextView
+                    android:id="@+id/lbl_latest_guide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/lbl_featured"
+                    android:layout_below="@id/rv_promotion_list"
+                    android:layout_marginTop="@dimen/margin_top_for_lbl"
+                    android:text="@string/latest"
+                    android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/lbl_burpple_new_and_trending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/lbl_featured"
-                android:layout_below="@id/lbl_latest_new_and_trending"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="@string/burpple_new_and_trending"
-                android:textColor="@color/primary_text"
-                android:textSize="@dimen/text_regular_3x" />
+                <TextView
+                    android:id="@+id/lbl_burpple_guides"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/lbl_featured"
+                    android:layout_below="@id/lbl_latest_guide"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/burpple_guides"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_regular_3x" />
 
-            <TextView
-                android:id="@+id/lbl_see_more_new_and_trending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/lbl_burpple_new_and_trending"
-                android:layout_marginRight="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="@string/see_more"
-                android:textColor="@color/accent"
-                android:textSize="@dimen/text_regular_3x" />
+                <TextView
+                    android:id="@+id/lbl_see_more_guides"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/lbl_burpple_guides"
+                    android:layout_marginRight="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/see_more"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/text_regular_3x" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_new_and_trending_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/lbl_see_more_new_and_trending" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_guide_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lbl_see_more_guides" />
 
-            <TextView
-                android:id="@+id/btn_explore_neighbourhoods"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rv_new_and_trending_list"
-                android:layout_marginBottom="@dimen/margin_medium_2"
-                android:layout_marginTop="@dimen/margin_medium_3"
-                android:background="@drawable/divider_margin_horizontal_line"
-                android:drawableLeft="@drawable/ic_location_on_24dp"
-                android:drawablePadding="@dimen/margin_medium_2"
-                android:paddingLeft="@dimen/margin_medium_2"
-                android:paddingTop="@dimen/margin_medium_2"
-                android:text="@string/explore_neighbourhoods"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/text_regular_3x" />
+                <TextView
+                    android:id="@+id/lbl_latest_new_and_trending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/lbl_featured"
+                    android:layout_below="@id/rv_guide_list"
+                    android:layout_marginTop="@dimen/margin_top_for_lbl"
+                    android:text="@string/latest"
+                    android:textColor="@color/primary_text" />
 
-            <TextView
-                android:id="@+id/btn_explore_categories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_explore_neighbourhoods"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:background="@drawable/divider_margin_horizontal_line"
-                android:drawableBottom="@drawable/divider_margin_horizontal_line"
-                android:drawableLeft="@drawable/ic_restaurant_24dp"
-                android:drawablePadding="@dimen/margin_medium_2"
-                android:paddingLeft="@dimen/margin_medium_2"
-                android:paddingTop="@dimen/margin_medium_2"
-                android:text="@string/explore_categories"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/text_regular_3x" />
+                <TextView
+                    android:id="@+id/lbl_burpple_new_and_trending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/lbl_featured"
+                    android:layout_below="@id/lbl_latest_new_and_trending"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/burpple_new_and_trending"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_regular_3x" />
+
+                <TextView
+                    android:id="@+id/lbl_see_more_new_and_trending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/lbl_burpple_new_and_trending"
+                    android:layout_marginRight="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/see_more"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/text_regular_3x" />
+
+                <LinearLayout
+                    android:id="@+id/ll_new_and_trending_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lbl_see_more_new_and_trending"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        app:cardElevation="@dimen/margin_medium">
+
+                        <include
+                            android:id="@+id/vp_1"
+                            layout="@layout/view_pod_new_and_trending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        app:cardElevation="@dimen/margin_medium">
+
+                        <include
+                            android:id="@+id/vp_2"
+                            layout="@layout/view_pod_new_and_trending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_explore_neighbourhoods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll_new_and_trending_list"
+                    android:layout_marginTop="@dimen/margin_medium_3"
+                    android:background="@drawable/divider_margin_horizontal_line"
+                    android:drawableLeft="@drawable/ic_location_on_24dp"
+                    android:drawablePadding="@dimen/margin_medium_2"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="@dimen/margin_medium_2"
+                    android:paddingLeft="@dimen/margin_medium_2"
+                    android:paddingTop="@dimen/margin_medium_2"
+                    android:text="@string/explore_neighbourhoods"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_regular_3x" />
+
+                <TextView
+                    android:id="@+id/btn_explore_categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_explore_neighbourhoods"
+                    android:background="@drawable/divider_margin_horizontal_line"
+                    android:drawableBottom="@drawable/divider_margin_horizontal_line"
+                    android:drawableLeft="@drawable/ic_restaurant_24dp"
+                    android:drawablePadding="@dimen/margin_medium_2"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="@dimen/margin_medium"
+                    android:paddingLeft="@dimen/margin_medium_2"
+                    android:paddingTop="@dimen/margin_medium_2"
+                    android:text="@string/explore_categories"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_regular_3x" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/colorPrimary"
+            app:itemIconTint="@color/white_full"
+            app:itemTextColor="@color/white_full"
+            app:menu="@menu/bottom_navigation_main" />
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -36,7 +36,7 @@ dependencies {
 
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 
-
+    implementation 'net.aungpyaephyo:mmtextview:1.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

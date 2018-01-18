@@ -25,7 +25,7 @@ public class NewAndTrendingAdapter extends BaseRecycleAdapter<NewAndTrendingView
 
     @Override
     public NewAndTrendingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View newlyOpenedItemView = mLayoutInflater.inflate(R.layout.view_item_new_and_trending, parent, false);
+        View newlyOpenedItemView = mLayoutInflater.inflate(R.layout.view_pod_new_and_trending, parent, false);
         return new NewAndTrendingViewHolder(newlyOpenedItemView);
     }
 

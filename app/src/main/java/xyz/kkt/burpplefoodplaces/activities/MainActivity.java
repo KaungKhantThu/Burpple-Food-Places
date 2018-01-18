@@ -8,6 +8,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import net.aungpyaephyo.mmtextview.components.MMTextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import xyz.kkt.burpplefoodplaces.R;
@@ -16,6 +25,8 @@ import xyz.kkt.burpplefoodplaces.adapters.HeroViewPagerAdapter;
 import xyz.kkt.burpplefoodplaces.adapters.NewAndTrendingAdapter;
 import xyz.kkt.burpplefoodplaces.adapters.PromotionAdapter;
 import xyz.kkt.burpplefoodplaces.components.PageIndicatorView;
+import xyz.kkt.burpplefoodplaces.data.model.BurppleModel;
+import xyz.kkt.burpplefoodplaces.events.RestApiEvents;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.rv_guide_list)
     RecyclerView rvGuideList;
 
-    @BindView(R.id.rv_new_and_trending_list)
-    RecyclerView rvNewAndTrendingList;
+//    @BindView(R.id.rv_new_and_trending_list)
+//    RecyclerView rvNewAndTrendingList;
 
     @BindView(R.id.vp_hero_img)
     ViewPager vpHeroImg;
@@ -36,8 +47,25 @@ public class MainActivity extends AppCompatActivity {
 
     private PromotionAdapter mPromotionAdapter;
     private GuideAdapter mGuideAdapter;
-    private NewAndTrendingAdapter mNewAndTrendingAdapter;
+    //private NewAndTrendingAdapter mNewAndTrendingAdapter;
     private HeroViewPagerAdapter mHeroViewPagerAdapter;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        EventBus.getDefault().register(this);
+
+        BurppleModel.getInstance().startLoadingFood(getApplication());
+
+        if (BurppleModel.getInstance().getmPromotionList() != null) {
+            mPromotionAdapter.setNewData(BurppleModel.getInstance().getmPromotionList());
+        }
+        if (BurppleModel.getInstance().getmGuideList() != null) {
+            mGuideAdapter.setNewData(BurppleModel.getInstance().getmGuideList());
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +98,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            int NUM_PAGES = mHeroViewPagerAdapter.getCount();
+            int currentPage = 0;
+
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (currentPage == NUM_PAGES) {
+                            currentPage = 0;
+                        }
+                        vpHeroImg.setCurrentItem(currentPage++, true);
+                    }
+                });
+
+            }
+        }, 1500, 5000);
+
         rvPromotionList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
         mPromotionAdapter = new PromotionAdapter(getApplicationContext());
         rvPromotionList.setAdapter(mPromotionAdapter);
@@ -78,11 +126,17 @@ public class MainActivity extends AppCompatActivity {
         mGuideAdapter = new GuideAdapter(getApplicationContext());
         rvGuideList.setAdapter(mGuideAdapter);
 
-        rvNewAndTrendingList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-        mNewAndTrendingAdapter = new NewAndTrendingAdapter(getApplicationContext());
-        rvNewAndTrendingList.setAdapter(mNewAndTrendingAdapter);
+//        rvNewAndTrendingList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+//        mNewAndTrendingAdapter = new NewAndTrendingAdapter(getApplicationContext());
+//        rvNewAndTrendingList.setAdapter(mNewAndTrendingAdapter);
 
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -106,4 +160,15 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onPromotionDataLoaded(RestApiEvents.PromotionDataLoadedEvent event) {
+        mPromotionAdapter.setNewData(event.getLoadPromotion());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onGuideDataLoadedl(RestApiEvents.GuideDataLoadedEvent event) {
+        mGuideAdapter.setNewData(event.getLoadGuide());
+    }
+
 }
