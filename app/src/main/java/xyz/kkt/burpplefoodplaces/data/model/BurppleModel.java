@@ -18,6 +18,7 @@ import xyz.kkt.burpplefoodplaces.events.RestApiEvents;
 import xyz.kkt.burpplefoodplaces.network.Call.FoodDataAgent;
 import xyz.kkt.burpplefoodplaces.network.Call.FoodDataAgentImpl;
 import xyz.kkt.burpplefoodplaces.utils.AppConstants;
+import xyz.kkt.burpplefoodplaces.utils.ConfigUtils;
 
 /**
  * Created by Lenovo on 1/5/2018.
@@ -31,13 +32,12 @@ public class BurppleModel {
     private List<FeaturedVO> mFeaturedList;
     private List<GuideVO> mGuideList;
 
-    private int pageIndexPro = 1;
-    private int pageIndexFea = 1;
-    private int pageIndexGui = 1;
-
     private BurppleModel() {
         EventBus.getDefault().register(this);
         mDataAgent = FoodDataAgentImpl.getInstance();
+        mPromotionList = new ArrayList<>();
+        mGuideList = new ArrayList<>();
+        mFeaturedList = new ArrayList<>();
     }
 
     public static BurppleModel getInstance() {
@@ -48,46 +48,75 @@ public class BurppleModel {
     }
 
     public void startLoadingFood(Context context) {
-        mDataAgent.loadPromotion(AppConstants.ACCESS_TOKEN, pageIndexPro, context);
-        mDataAgent.loadFeatured(AppConstants.ACCESS_TOKEN, pageIndexFea, context);
-        mDataAgent.loadGuide(AppConstants.ACCESS_TOKEN, pageIndexGui, context);
+        startLoadingPromotion(context);
+        startLoadingGuide(context);
+        startLoadingFeatured(context);
     }
 
-    public void loadMoreFood(Context context) {
-        // int pageIndex = ConfigUtils.getObjInstance().loadPageIndex();
-        mDataAgent.loadPromotion(AppConstants.ACCESS_TOKEN, pageIndexPro, context);
-        mDataAgent.loadFeatured(AppConstants.ACCESS_TOKEN, pageIndexFea, context);
-        mDataAgent.loadGuide(AppConstants.ACCESS_TOKEN, pageIndexGui, context);
+    public void startLoadingPromotion(Context context) {
+        mDataAgent.loadPromotion(AppConstants.ACCESS_TOKEN, ConfigUtils.getObjInstance().loadProPageIndex(), context);
     }
 
-    public void forceRefreshFood(Context context) {
-        // ConfigUtils.getObjInstance().savePageIndex(1);
-        pageIndexPro = 1;
-        pageIndexFea = 1;
-        pageIndexGui = 1;
-        startLoadingFood(context);
+    public void startLoadingGuide(Context context) {
+        mDataAgent.loadGuide(AppConstants.ACCESS_TOKEN, ConfigUtils.getObjInstance().loadGuiPageIndex(), context);
     }
+
+    public void startLoadingFeatured(Context context) {
+        mDataAgent.loadFeatured(AppConstants.ACCESS_TOKEN, ConfigUtils.getObjInstance().loadFeaPageIndex(), context);
+    }
+
+    public void loadMorePromotion(Context context) {
+        int pageIndex = ConfigUtils.getObjInstance().loadProPageIndex();
+        mDataAgent.loadPromotion(AppConstants.ACCESS_TOKEN, pageIndex, context);
+    }
+
+    public void loadMoreGuide(Context context) {
+        int pageIndex = ConfigUtils.getObjInstance().loadGuiPageIndex();
+        mDataAgent.loadGuide(AppConstants.ACCESS_TOKEN, pageIndex, context);
+    }
+
+    public void loadMoreFeatured(Context context) {
+        int pageIndex = ConfigUtils.getObjInstance().loadFeaPageIndex();
+        mDataAgent.loadFeatured(AppConstants.ACCESS_TOKEN, pageIndex, context);
+    }
+
+    public void forceRefreshPromotion(Context context) {
+        mPromotionList = new ArrayList<>();
+        ConfigUtils.getObjInstance().saveProPageIndex(1);
+        startLoadingPromotion(context);
+    }
+
+    public void forceRefreshGuide(Context context) {
+        mGuideList = new ArrayList<>();
+        ConfigUtils.getObjInstance().saveGuiPageIndex(1);
+        startLoadingGuide(context);
+    }
+
+
+    public void forceRefreshFeatured(Context context) {
+        mFeaturedList = new ArrayList<>();
+        ConfigUtils.getObjInstance().saveFeaPageIndex(1);
+        startLoadingFeatured(context);
+    }
+
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onPromotionDataLoaded(RestApiEvents.PromotionDataLoadedEvent event) {
-        //ConfigUtils.getObjInstance().savePageIndex(event.getLoadedPageIndex() + 1);
-        pageIndexPro++;
+        ConfigUtils.getObjInstance().saveProPageIndex(event.getLoadedPageIndex() + 1);
         mPromotionList = event.getLoadPromotion();
 
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onFeaturedDataLoaded(RestApiEvents.FeaturedDataLoadedEvent event) {
-        //ConfigUtils.getObjInstance().savePageIndex(event.getLoadedPageIndex() + 1);
-        pageIndexFea++;
+        ConfigUtils.getObjInstance().saveFeaPageIndex(event.getLoadedPageIndex() + 1);
         mFeaturedList = event.getLoadFeatured();
 
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onGuideDataLoadedl(RestApiEvents.GuideDataLoadedEvent event) {
-        //ConfigUtils.getObjInstance().savePageIndex(event.getLoadedPageIndex() + 1);
-        pageIndexGui++;
+        ConfigUtils.getObjInstance().saveGuiPageIndex(event.getLoadedPageIndex() + 1);
         mGuideList = event.getLoadGuide();
 
     }

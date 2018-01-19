@@ -9,7 +9,9 @@ import android.content.SharedPreferences;
 
 public class ConfigUtils {
 
-    private static final String KEY_PAGE_INDEX = "KEY_PAGE_INDEX";
+    private static final String PROMOTION_KEY_PAGE_INDEX = "KEY_PAGE_INDEX";
+    private static final String GUIDE_KEY_PAGE_INDEX = "KEY_PAGE_INDEX";
+    private static final String FEATURED_KEY_PAGE_INDEX = "KEY_PAGE_INDEX";
 
     private SharedPreferences mSharedPreferences;
 
@@ -27,11 +29,28 @@ public class ConfigUtils {
         return sObjInstance;
     }
 
-    public void savePageIndex(int pageIndex) {
-        mSharedPreferences.edit().putInt(KEY_PAGE_INDEX, pageIndex).apply();
+    public void saveProPageIndex(int pageIndex) {
+        mSharedPreferences.edit().putInt(PROMOTION_KEY_PAGE_INDEX, pageIndex).apply();
     }
 
-    public int loadPageIndex() {
-        return mSharedPreferences.getInt(KEY_PAGE_INDEX, 1);
+    public void saveGuiPageIndex(int pageIndex) {
+        mSharedPreferences.edit().putInt(GUIDE_KEY_PAGE_INDEX, pageIndex).apply();
     }
+
+    public void saveFeaPageIndex(int pageIndex) {
+        mSharedPreferences.edit().putInt(FEATURED_KEY_PAGE_INDEX, pageIndex).apply();
+    }
+
+    public int loadProPageIndex() {
+        return mSharedPreferences.getInt(PROMOTION_KEY_PAGE_INDEX, 1);
+    }
+
+    public int loadGuiPageIndex() {
+        return mSharedPreferences.getInt(GUIDE_KEY_PAGE_INDEX, 1);
+    }
+
+    public int loadFeaPageIndex() {
+        return mSharedPreferences.getInt(FEATURED_KEY_PAGE_INDEX, 1);
+    }
+
 }

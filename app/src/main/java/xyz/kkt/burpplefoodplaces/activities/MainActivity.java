@@ -1,7 +1,9 @@
 package xyz.kkt.burpplefoodplaces.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +16,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,16 +28,20 @@ import xyz.kkt.burpplefoodplaces.adapters.HeroViewPagerAdapter;
 import xyz.kkt.burpplefoodplaces.adapters.NewAndTrendingAdapter;
 import xyz.kkt.burpplefoodplaces.adapters.PromotionAdapter;
 import xyz.kkt.burpplefoodplaces.components.PageIndicatorView;
+import xyz.kkt.burpplefoodplaces.components.SmartRecyclerView;
+import xyz.kkt.burpplefoodplaces.components.SmartScrollListener;
 import xyz.kkt.burpplefoodplaces.data.model.BurppleModel;
+import xyz.kkt.burpplefoodplaces.data.vos.GuideVO;
+import xyz.kkt.burpplefoodplaces.data.vos.PromotionVO;
 import xyz.kkt.burpplefoodplaces.events.RestApiEvents;
 
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_promotion_list)
-    RecyclerView rvPromotionList;
+    SmartRecyclerView rvPromotionList;
 
     @BindView(R.id.rv_guide_list)
-    RecyclerView rvGuideList;
+    SmartRecyclerView rvGuideList;
 
 //    @BindView(R.id.rv_new_and_trending_list)
 //    RecyclerView rvNewAndTrendingList;
@@ -44,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.piv_hero_img)
     PageIndicatorView pivHeroImg;
+
+    @BindView(R.id.swipe_refreshing_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    private SmartScrollListener mProSmartScrollListener;
+    private SmartScrollListener mGuiSmartScrollListener;
 
     private PromotionAdapter mPromotionAdapter;
     private GuideAdapter mGuideAdapter;
@@ -130,6 +143,43 @@ public class MainActivity extends AppCompatActivity {
 //        mNewAndTrendingAdapter = new NewAndTrendingAdapter(getApplicationContext());
 //        rvNewAndTrendingList.setAdapter(mNewAndTrendingAdapter);
 
+        mProSmartScrollListener = new SmartScrollListener(new SmartScrollListener.OnSmartScrollListener() {
+            @Override
+            public void onListEndReach() {
+                Snackbar.make(rvPromotionList, "Loading Promotion data.", Snackbar.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(true);
+
+                BurppleModel.getInstance().loadMorePromotion(getApplicationContext());
+            }
+        });
+
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                BurppleModel.getInstance().forceRefreshPromotion(getApplicationContext());
+//            }
+//        });
+
+        rvPromotionList.addOnScrollListener(mProSmartScrollListener);
+
+        mGuiSmartScrollListener = new SmartScrollListener(new SmartScrollListener.OnSmartScrollListener() {
+            @Override
+            public void onListEndReach() {
+                Snackbar.make(rvGuideList, "Loading Guide data.", Snackbar.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(true);
+
+                BurppleModel.getInstance().loadMoreGuide(getApplicationContext());
+            }
+        });
+
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                BurppleModel.getInstance().forceRefreshGuide(getApplicationContext());
+//            }
+//        });
+
+        rvGuideList.addOnScrollListener(mGuiSmartScrollListener);
 
     }
 
@@ -163,12 +213,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onPromotionDataLoaded(RestApiEvents.PromotionDataLoadedEvent event) {
-        mPromotionAdapter.setNewData(event.getLoadPromotion());
+        mPromotionAdapter.appendNewData(event.getLoadPromotion());
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onGuideDataLoadedl(RestApiEvents.GuideDataLoadedEvent event) {
-        mGuideAdapter.setNewData(event.getLoadGuide());
+        mGuideAdapter.appendNewData(event.getLoadGuide());
+        swipeRefreshLayout.setRefreshing(false);
     }
 
 }

@@ -14,4 +14,9 @@
     <string name="text_location">Location</string>
     <string name="text_restaurants">Restaurants</string>
     <string name="text_search">Search</string>
+    <string name="shop_name"><![CDATA[Wildfire Chicken & Burgers]]></string>
+    <string name="shop_area">Hleden</string>
+    <string name="promotion_duration">Till 31st Jan \'18</string>
+    <string name="promotion_title">1-for-1 Shabu Burger</string>
+    <string name="burpple_exclusive">BURPPLE EXCLUSIVE</string>
 </resources>

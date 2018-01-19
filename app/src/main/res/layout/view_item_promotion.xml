@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/iv_promotion_hero"
-    android:layout_width="200dp"
-    android:layout_height="150dp"
-    android:layout_marginLeft="@dimen/margin_medium_2"
-    android:src="@drawable/anime" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_medium">
+
+    <ImageView
+        android:id="@+id/iv_promotion_hero"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/anime" />
+
+    <TextView
+        android:id="@+id/tv_promotion_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_promotion_hero"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:background="@drawable/divider_margin_horizontal_white_line"
+        android:paddingTop="@dimen/margin_medium"
+        android:text="@string/promotion_duration"
+        android:textAllCaps="true"
+        android:textColor="@color/white_full"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <TextView
+        android:id="@+id/tv_promotion_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_promotion_duration"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:text="@string/promotion_title"
+        android:textColor="@color/white_full"
+        android:textSize="@dimen/text_regular_3x" />
+
+    <TextView
+        android:id="@+id/lbl_burpple_exclusive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_promotion_title"
+        android:layout_alignLeft="@id/tv_promotion_title"
+        android:background="@color/gold_orange"
+        android:padding="@dimen/margin_small"
+        android:text="@string/burpple_exclusive"
+        android:textColor="@color/white_full"
+        android:textSize="@dimen/text_regular" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/iv_promotion_hero"
+        android:background="@color/gold_orange"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/shop_name"
+            android:textColor="@color/white_full"
+            android:textSize="@dimen/text_regular_2x" />
+
+        <TextView
+            android:id="@+id/tv_shop_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:text="@string/shop_area"
+            android:textColor="@color/white_full"
+            android:textSize="@dimen/text_regular" />
+    </LinearLayout>
+</RelativeLayout>
 
