@@ -134,7 +134,7 @@ public class BurppleContract {
 
         public static final String TABLE_NAME = PATH_FEATURED;
 
-        public static final String COLUMN_FEATURED_ID = "featured-id";
+        public static final String COLUMN_FEATURED_ID = "featured_id";
         public static final String COLUMN_FEATURED_IMAGE = "featured_img";
         public static final String COLUMN_FEATURED_TITLE = "featured_title";
         public static final String COLUMN_FEATURED_DESC = "featured_desc";

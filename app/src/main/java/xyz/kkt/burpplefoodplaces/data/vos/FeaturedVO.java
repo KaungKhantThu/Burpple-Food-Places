@@ -1,6 +1,10 @@
 package xyz.kkt.burpplefoodplaces.data.vos;
 
+import android.content.ContentValues;
+
 import com.google.gson.annotations.SerializedName;
+
+import xyz.kkt.burpplefoodplaces.persistence.BurppleContract;
 
 /**
  * Created by Lenovo on 1/14/2018.
@@ -41,5 +45,17 @@ public class FeaturedVO {
 
     public String getBurppleFeaturedTag() {
         return burppleFeaturedTag;
+    }
+
+    public ContentValues parseToContentValues() {
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(BurppleContract.FeaturedEntry.COLUMN_FEATURED_ID, burppleFeaturedId);
+        contentValues.put(BurppleContract.FeaturedEntry.COLUMN_FEATURED_IMAGE, burppleFeaturedImage);
+        contentValues.put(BurppleContract.FeaturedEntry.COLUMN_FEATURED_TITLE, burppleFeaturedTitle);
+        contentValues.put(BurppleContract.FeaturedEntry.COLUMN_FEATURED_DESC, burppleFeaturedDesc);
+        contentValues.put(BurppleContract.FeaturedEntry.COLUMN_FEATURED_TAG, burppleFeaturedTag);
+
+        return contentValues;
     }
 }

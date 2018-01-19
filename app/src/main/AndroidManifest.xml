@@ -23,6 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".persistence.BurppleProvider"
+            android:authorities="xyz.kkt.burpplefoodplaces"
+            android:exported="false"
+            android:syncable="true" />
+
     </application>
 
 </manifest>

@@ -1,6 +1,10 @@
 package xyz.kkt.burpplefoodplaces.data.vos;
 
+import android.content.ContentValues;
+
 import com.google.gson.annotations.SerializedName;
+
+import xyz.kkt.burpplefoodplaces.persistence.BurppleContract;
 
 /**
  * Created by Lenovo on 1/14/2018.
@@ -27,5 +31,15 @@ public class PromotionShopVO {
 
     public String getBurppleShopArea() {
         return burppleShopArea;
+    }
+
+    public ContentValues parseToContentValues() {
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(BurppleContract.PromotionShopEntry.COLUMN_SHOP_ID, burppleShopId);
+        contentValues.put(BurppleContract.PromotionShopEntry.COLUMN_SHOP_NAME, burbbleShopName);
+        contentValues.put(BurppleContract.PromotionShopEntry.COLUMN_AREA, burppleShopArea);
+
+        return contentValues;
     }
 }

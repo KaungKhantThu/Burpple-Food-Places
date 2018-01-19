@@ -10,6 +10,8 @@ import xyz.kkt.burpplefoodplaces.utils.ConfigUtils;
 
 public class BurppleApp extends Application {
 
+    public static final String LOG_TAG = "Burpple App";
+
     @Override
     public void onCreate() {
         super.onCreate();

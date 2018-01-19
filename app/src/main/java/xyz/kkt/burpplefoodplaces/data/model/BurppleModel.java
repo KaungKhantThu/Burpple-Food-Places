@@ -11,12 +11,15 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.kkt.burpplefoodplaces.BurppleApp;
 import xyz.kkt.burpplefoodplaces.data.vos.FeaturedVO;
 import xyz.kkt.burpplefoodplaces.data.vos.GuideVO;
+import xyz.kkt.burpplefoodplaces.data.vos.PromotionShopVO;
 import xyz.kkt.burpplefoodplaces.data.vos.PromotionVO;
 import xyz.kkt.burpplefoodplaces.events.RestApiEvents;
 import xyz.kkt.burpplefoodplaces.network.Call.FoodDataAgent;
 import xyz.kkt.burpplefoodplaces.network.Call.FoodDataAgentImpl;
+import xyz.kkt.burpplefoodplaces.persistence.BurppleContract;
 import xyz.kkt.burpplefoodplaces.utils.AppConstants;
 import xyz.kkt.burpplefoodplaces.utils.ConfigUtils;
 
@@ -103,21 +106,76 @@ public class BurppleModel {
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onPromotionDataLoaded(RestApiEvents.PromotionDataLoadedEvent event) {
         ConfigUtils.getObjInstance().saveProPageIndex(event.getLoadedPageIndex() + 1);
-        mPromotionList = event.getLoadPromotion();
+        mPromotionList.addAll(event.getLoadPromotion());
+
+        ContentValues[] promotionCVs = new ContentValues[event.getLoadPromotion().size()];
+        List<ContentValues> promotionShopCVList = new ArrayList<>();
+        List<ContentValues> promotionTermCVList = new ArrayList<>();
+
+        for (int index = 0; index < promotionCVs.length; index++) {
+            PromotionVO promotion = event.getLoadPromotion().get(index);
+            promotionCVs[index] = promotion.parseToContentValues();
+
+            PromotionShopVO promotionShop = promotion.getBurpplePromotionShop();
+            promotionShopCVList.add(promotionShop.parseToContentValues());
+
+            for (String term : promotion.getBurpplePromotionTerms()) {
+                ContentValues termCV = new ContentValues();
+                termCV.put(BurppleContract.PromotionTermEntry.COLUMN_TERM_IN_PROMOTION_ID, promotion.getBurpplePromotionId());
+                termCV.put(BurppleContract.PromotionTermEntry.COLUMN_TERM, term);
+                promotionTermCVList.add(termCV);
+            }
+
+        }
+
+        int insertedPromotion = event.getContext().getContentResolver().bulkInsert(BurppleContract.PromotionEntry.CONTENT_URI,
+                promotionCVs);
+        Log.d(BurppleApp.LOG_TAG, "Inserted Promotion Rows : " + insertedPromotion);
+
+        int insertedPromotionShop = event.getContext().getContentResolver().bulkInsert(BurppleContract.PromotionShopEntry.CONTENT_URI,
+                promotionShopCVList.toArray(new ContentValues[0]));
+        Log.d(BurppleApp.LOG_TAG, "Inserted Promotion Shop Rows : " + insertedPromotionShop);
+
+        int insertedPromotionTerm = event.getContext().getContentResolver().bulkInsert(BurppleContract.PromotionTermEntry.CONTENT_URI,
+                promotionTermCVList.toArray(new ContentValues[0]));
+        Log.d(BurppleApp.LOG_TAG, "Inserted Promotion Term Rows : " + insertedPromotionTerm);
 
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onFeaturedDataLoaded(RestApiEvents.FeaturedDataLoadedEvent event) {
         ConfigUtils.getObjInstance().saveFeaPageIndex(event.getLoadedPageIndex() + 1);
-        mFeaturedList = event.getLoadFeatured();
+        mFeaturedList.addAll(event.getLoadFeatured());
+
+        ContentValues[] featuredCVs = new ContentValues[event.getLoadFeatured().size()];
+
+        for (int index = 0; index < featuredCVs.length; index++) {
+            FeaturedVO featured = event.getLoadFeatured().get(index);
+            featuredCVs[index] = featured.parseToContentValues();
+
+        }
+
+        int insertedFeatured = event.getContext().getContentResolver().bulkInsert(BurppleContract.FeaturedEntry.CONTENT_URI,
+                featuredCVs);
+        Log.d(BurppleApp.LOG_TAG, "Inserted Featured Rows : " + insertedFeatured);
 
     }
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    public void onGuideDataLoadedl(RestApiEvents.GuideDataLoadedEvent event) {
+    public void onGuideDataLoaded(RestApiEvents.GuideDataLoadedEvent event) {
         ConfigUtils.getObjInstance().saveGuiPageIndex(event.getLoadedPageIndex() + 1);
-        mGuideList = event.getLoadGuide();
+        mGuideList.addAll(event.getLoadGuide());
+
+        ContentValues[] guideCVs = new ContentValues[event.getLoadGuide().size()];
+
+        for (int index = 0; index < guideCVs.length; index++) {
+            GuideVO guide = event.getLoadGuide().get(index);
+            guideCVs[index] = guide.parseToContentValues();
+        }
+
+        int insertedGuide = event.getContext().getContentResolver().bulkInsert(BurppleContract.GuideEntry.CONTENT_URI,
+                guideCVs);
+        Log.d(BurppleApp.LOG_TAG, "Inserted Guide Rows : " + insertedGuide);
 
     }
 

@@ -53,8 +53,8 @@ public class PromotionViewHolder extends BaseViewHolder<PromotionVO> {
                 tvPromotionTitle.setText(data.getBurpplePromotionTitle());
             }
 
-            if (data.getBurpplePromotionUtil() != null) {
-                tvPromotionDuration.setText(data.getBurpplePromotionUtil());
+            if (data.getBurpplePromotionUntil() != null) {
+                tvPromotionDuration.setText(data.getBurpplePromotionUntil());
             }
 
             if (data.getBurpplePromotionShop() != null) {

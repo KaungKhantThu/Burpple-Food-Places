@@ -20,7 +20,7 @@ public class BurppleDBHelper extends SQLiteOpenHelper {
             BurppleContract.PromotionEntry.COLUMN_TITLE + " TEXT, " +
             BurppleContract.PromotionEntry.COLUMN_UNTIL + " TEXT, " +
             BurppleContract.PromotionEntry.COLUMN_PROMOTION_SHOP_ID + " VARCHAR(256), " +
-            BurppleContract.PromotionEntry.COLUMN_IS_EXCLUSIVE + " BOOLEAN), " +
+            BurppleContract.PromotionEntry.COLUMN_IS_EXCLUSIVE + " BOOLEAN, " +
 
             " UNIQUE (" + BurppleContract.PromotionEntry.COLUMN_PROMOTION_ID + ") ON CONFLICT REPLACE" +
             ");";
@@ -46,8 +46,8 @@ public class BurppleDBHelper extends SQLiteOpenHelper {
             BurppleContract.GuideEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             BurppleContract.GuideEntry.COLUMN_GUIDE_ID + " VARCHAR(256), " +
             BurppleContract.GuideEntry.COLUMN_GUIDE_IMAGE + " TEXT, " +
-            BurppleContract.GuideEntry.COLUMN_GUIDE_TITLE + " VARCHAR(256), " +
-            BurppleContract.GuideEntry.COLUMN_GUIDE_DESC + " VARCHAR(256), " +
+            BurppleContract.GuideEntry.COLUMN_GUIDE_TITLE + " TEXT, " +
+            BurppleContract.GuideEntry.COLUMN_GUIDE_DESC + " TEXT, " +
 
             " UNIQUE (" + BurppleContract.GuideEntry.COLUMN_GUIDE_ID + ") ON CONFLICT REPLACE" +
             ");";
@@ -57,8 +57,8 @@ public class BurppleDBHelper extends SQLiteOpenHelper {
             BurppleContract.FeaturedEntry.COLUMN_FEATURED_ID + " VARCHAR(256), " +
             BurppleContract.FeaturedEntry.COLUMN_FEATURED_IMAGE + " TEXT, " +
             BurppleContract.FeaturedEntry.COLUMN_FEATURED_TITLE + " TEXT, " +
-            BurppleContract.FeaturedEntry.COLUMN_FEATURED_DESC + " VARCHAR(256), " +
-            BurppleContract.FeaturedEntry.COLUMN_FEATURED_TAG + " VARCHAR(256), " +
+            BurppleContract.FeaturedEntry.COLUMN_FEATURED_DESC + " TEXT, " +
+            BurppleContract.FeaturedEntry.COLUMN_FEATURED_TAG + " TEXT, " +
 
             " UNIQUE (" + BurppleContract.FeaturedEntry.COLUMN_FEATURED_ID + ") ON CONFLICT REPLACE" +
             ");";
