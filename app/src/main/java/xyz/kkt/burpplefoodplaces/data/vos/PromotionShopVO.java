@@ -1,6 +1,7 @@
 package xyz.kkt.burpplefoodplaces.data.vos;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -41,5 +42,16 @@ public class PromotionShopVO {
         contentValues.put(BurppleContract.PromotionShopEntry.COLUMN_AREA, burppleShopArea);
 
         return contentValues;
+    }
+
+    public static PromotionShopVO parseFromCursor(Cursor cursor) {
+
+        PromotionShopVO promotionShop = new PromotionShopVO();
+
+        promotionShop.burppleShopId = cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionShopEntry.COLUMN_SHOP_ID));
+        promotionShop.burbbleShopName = cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionShopEntry.COLUMN_SHOP_NAME));
+        promotionShop.burppleShopArea = cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionShopEntry.COLUMN_AREA));
+
+        return promotionShop;
     }
 }

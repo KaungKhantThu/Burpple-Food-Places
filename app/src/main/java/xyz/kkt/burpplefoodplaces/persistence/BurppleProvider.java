@@ -109,6 +109,7 @@ public class BurppleProvider extends ContentProvider {
                         null,
                         sortOrder);
                 break;
+
             default:
                 queryCursor = mDBHelper.getReadableDatabase().query(getTableName(uri),
                         projection,

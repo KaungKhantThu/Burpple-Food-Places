@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class BurppleDBHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "burpple.db";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
 
     public static final String SQL_CREATE_PROMOTION = "CREATE TABLE " + BurppleContract.PromotionEntry.TABLE_NAME + " (" +
             BurppleContract.PromotionEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +

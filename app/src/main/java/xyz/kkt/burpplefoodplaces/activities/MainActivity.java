@@ -1,7 +1,12 @@
 package xyz.kkt.burpplefoodplaces.activities;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +21,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,11 +37,16 @@ import xyz.kkt.burpplefoodplaces.components.PageIndicatorView;
 import xyz.kkt.burpplefoodplaces.components.SmartRecyclerView;
 import xyz.kkt.burpplefoodplaces.components.SmartScrollListener;
 import xyz.kkt.burpplefoodplaces.data.model.BurppleModel;
+import xyz.kkt.burpplefoodplaces.data.vos.FeaturedVO;
 import xyz.kkt.burpplefoodplaces.data.vos.GuideVO;
 import xyz.kkt.burpplefoodplaces.data.vos.PromotionVO;
 import xyz.kkt.burpplefoodplaces.events.RestApiEvents;
+import xyz.kkt.burpplefoodplaces.mvp.presenters.MainPresenter;
+import xyz.kkt.burpplefoodplaces.mvp.views.MainView;
+import xyz.kkt.burpplefoodplaces.persistence.BurppleContract;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>,
+        MainView {
 
     @BindView(R.id.rv_promotion_list)
     SmartRecyclerView rvPromotionList;
@@ -62,23 +73,11 @@ public class MainActivity extends AppCompatActivity {
     private GuideAdapter mGuideAdapter;
     //private NewAndTrendingAdapter mNewAndTrendingAdapter;
     private HeroViewPagerAdapter mHeroViewPagerAdapter;
+    private MainPresenter mPresenter;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        EventBus.getDefault().register(this);
-
-        BurppleModel.getInstance().startLoadingFood(getApplication());
-
-        if (BurppleModel.getInstance().getmPromotionList() != null) {
-            mPromotionAdapter.setNewData(BurppleModel.getInstance().getmPromotionList());
-        }
-        if (BurppleModel.getInstance().getmGuideList() != null) {
-            mGuideAdapter.setNewData(BurppleModel.getInstance().getmGuideList());
-        }
-
-    }
+    private static final int FEATURED_LIST_LOADER_ID = 1001;
+    private static final int PROMOTIONS_LIST_LOADER_ID = 1002;
+    private static final int GUIDES_LIST_LOADER_ID = 1003;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this, this);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
+        mPresenter = new MainPresenter();
+        mPresenter.onCreate(this);
 
         mHeroViewPagerAdapter = new HeroViewPagerAdapter(getApplicationContext());
         vpHeroImg.setAdapter(mHeroViewPagerAdapter);
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(rvPromotionList, "Loading Promotion data.", Snackbar.LENGTH_LONG).show();
                 swipeRefreshLayout.setRefreshing(true);
 
-                BurppleModel.getInstance().loadMorePromotion(getApplicationContext());
+                mPresenter.onProListEndReach(getApplicationContext());
             }
         });
 
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(rvGuideList, "Loading Guide data.", Snackbar.LENGTH_LONG).show();
                 swipeRefreshLayout.setRefreshing(true);
 
-                BurppleModel.getInstance().loadMoreGuide(getApplicationContext());
+                mPresenter.onGuiListEndReach(getApplicationContext());
             }
         });
 
@@ -181,13 +182,42 @@ public class MainActivity extends AppCompatActivity {
 
         rvGuideList.addOnScrollListener(mGuiSmartScrollListener);
 
+        getSupportLoaderManager().initLoader(PROMOTIONS_LIST_LOADER_ID, null, this);
+        getSupportLoaderManager().initLoader(GUIDES_LIST_LOADER_ID, null, this);
+        getSupportLoaderManager().initLoader(FEATURED_LIST_LOADER_ID, null, this);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenter.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.onPause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
+        mPresenter.onStop();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -213,14 +243,88 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onPromotionDataLoaded(RestApiEvents.PromotionDataLoadedEvent event) {
-        mPromotionAdapter.appendNewData(event.getLoadPromotion());
-        swipeRefreshLayout.setRefreshing(false);
+//        mPromotionAdapter.appendNewData(event.getLoadPromotion());
+//        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onGuideDataLoadedl(RestApiEvents.GuideDataLoadedEvent event) {
+    public void onGuideDataLoaded(RestApiEvents.GuideDataLoadedEvent event) {
         mGuideAdapter.appendNewData(event.getLoadGuide());
         swipeRefreshLayout.setRefreshing(false);
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        switch (id) {
+            case PROMOTIONS_LIST_LOADER_ID:
+                return new CursorLoader(getApplicationContext(),
+                        BurppleContract.PromotionEntry.CONTENT_URI,
+                        null, null,
+                        null, null);
+            case GUIDES_LIST_LOADER_ID:
+                return new CursorLoader(getApplicationContext(),
+                        BurppleContract.GuideEntry.CONTENT_URI,
+                        null, null,
+                        null, null);
+            case FEATURED_LIST_LOADER_ID:
+                return new CursorLoader(getApplicationContext(),
+                        BurppleContract.FeaturedEntry.CONTENT_URI,
+                        null, null,
+                        null, null);
+        }
+
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+        switch (loader.getId()) {
+            case PROMOTIONS_LIST_LOADER_ID:
+                mPresenter.onProDataLoaded(data);
+                break;
+
+            case GUIDES_LIST_LOADER_ID:
+                mPresenter.onGuiDataLoaded(data);
+                break;
+
+            case FEATURED_LIST_LOADER_ID:
+                mPresenter.onFeaDataLoaded(data);
+                break;
+        }
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
+    @Override
+    public void displayPromotionList(List<PromotionVO> promotionList) {
+        mPromotionAdapter.setNewData(promotionList);
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void displayGuideList(List<GuideVO> guideList) {
+        mGuideAdapter.setNewData(guideList);
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void displayFeaturedImgList(List<FeaturedVO> featuredImgList) {
+        mHeroViewPagerAdapter.setFeaturedImg(featuredImgList);
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void setTrueSwipeRefreshLayout() {
+        swipeRefreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
+    }
 }

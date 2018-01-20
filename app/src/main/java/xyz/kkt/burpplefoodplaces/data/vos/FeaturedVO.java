@@ -1,6 +1,8 @@
 package xyz.kkt.burpplefoodplaces.data.vos;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -58,4 +60,18 @@ public class FeaturedVO {
 
         return contentValues;
     }
+
+    public static FeaturedVO parseFromCursor(Cursor cursor) {
+
+        FeaturedVO featured = new FeaturedVO();
+
+        featured.burppleFeaturedId = cursor.getString(cursor.getColumnIndex(BurppleContract.FeaturedEntry.COLUMN_FEATURED_ID));
+        featured.burppleFeaturedImage = cursor.getString(cursor.getColumnIndex(BurppleContract.FeaturedEntry.COLUMN_FEATURED_IMAGE));
+        featured.burppleFeaturedTitle = cursor.getString(cursor.getColumnIndex(BurppleContract.FeaturedEntry.COLUMN_FEATURED_TITLE));
+        featured.burppleFeaturedDesc = cursor.getString(cursor.getColumnIndex(BurppleContract.FeaturedEntry.COLUMN_FEATURED_DESC));
+        featured.burppleFeaturedTag = cursor.getString(cursor.getColumnIndex(BurppleContract.FeaturedEntry.COLUMN_FEATURED_TAG));
+
+        return featured;
+    }
+
 }

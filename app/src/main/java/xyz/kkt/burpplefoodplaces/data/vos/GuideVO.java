@@ -1,6 +1,8 @@
 package xyz.kkt.burpplefoodplaces.data.vos;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -52,4 +54,17 @@ public class GuideVO {
         return contentValues;
 
     }
+
+    public static GuideVO parseFromCursor(Cursor cursor) {
+
+        GuideVO guide = new GuideVO();
+
+        guide.burppleGuideId = cursor.getString(cursor.getColumnIndex(BurppleContract.GuideEntry.COLUMN_GUIDE_ID));
+        guide.burppleGuideImage = cursor.getString(cursor.getColumnIndex(BurppleContract.GuideEntry.COLUMN_GUIDE_IMAGE));
+        guide.burppleGuideTitle = cursor.getString(cursor.getColumnIndex(BurppleContract.GuideEntry.COLUMN_GUIDE_TITLE));
+        guide.burppleGuideDesc = cursor.getString(cursor.getColumnIndex(BurppleContract.GuideEntry.COLUMN_GUIDE_DESC));
+
+        return guide;
+    }
+
 }

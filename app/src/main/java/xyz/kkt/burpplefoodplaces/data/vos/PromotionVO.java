@@ -1,9 +1,12 @@
 package xyz.kkt.burpplefoodplaces.data.vos;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import xyz.kkt.burpplefoodplaces.persistence.BurppleContract;
@@ -77,4 +80,41 @@ public class PromotionVO {
         return contentValues;
 
     }
+
+    public static PromotionVO parseFromCursor(Context context, Cursor cursor) {
+
+        PromotionVO promotions = new PromotionVO();
+
+        promotions.burpplePromotionId = cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionEntry.COLUMN_PROMOTION_ID));
+        promotions.burpplePromotionImage = cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionEntry.COLUMN_PROMOTION_IMAGE));
+        promotions.burpplePromotionTitle = cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionEntry.COLUMN_TITLE));
+        promotions.burpplePromotionUntil = cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionEntry.COLUMN_UNTIL));
+        promotions.isBurppleExculsive = Boolean.valueOf(cursor.getString(cursor.getColumnIndex(BurppleContract.PromotionEntry.COLUMN_IS_EXCLUSIVE)));
+
+        promotions.burpplePromotionShop = PromotionShopVO.parseFromCursor(cursor);
+        promotions.burpplePromotionTerms = loadPromotionTerms(context, promotions.burpplePromotionId);
+
+        return promotions;
+    }
+
+    private static List<String> loadPromotionTerms(Context context, String promotionId) {
+        Cursor promotionTermsCursor = context.getContentResolver().query(BurppleContract.PromotionTermEntry.CONTENT_URI,
+                null,
+                BurppleContract.PromotionTermEntry.COLUMN_TERM_IN_PROMOTION_ID + " = ?", new String[]{promotionId},
+                null);
+
+        if (promotionTermsCursor != null && promotionTermsCursor.moveToFirst()) {
+            List<String> promotionTerms = new ArrayList<>();
+            do {
+                promotionTerms.add(
+                        promotionTermsCursor.getString(
+                                promotionTermsCursor.getColumnIndex(BurppleContract.PromotionTermEntry.COLUMN_TERM)));
+            } while (promotionTermsCursor.moveToNext());
+            promotionTermsCursor.close();
+            return promotionTerms;
+        }
+
+        return null;
+    }
+
 }
