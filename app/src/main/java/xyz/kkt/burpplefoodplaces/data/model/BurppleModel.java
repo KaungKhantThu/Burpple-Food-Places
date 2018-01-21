@@ -11,14 +11,16 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import xyz.kkt.burpplefoodplaces.BurppleApp;
 import xyz.kkt.burpplefoodplaces.data.vos.FeaturedVO;
 import xyz.kkt.burpplefoodplaces.data.vos.GuideVO;
 import xyz.kkt.burpplefoodplaces.data.vos.PromotionShopVO;
 import xyz.kkt.burpplefoodplaces.data.vos.PromotionVO;
 import xyz.kkt.burpplefoodplaces.events.RestApiEvents;
-import xyz.kkt.burpplefoodplaces.network.Call.FoodDataAgent;
-import xyz.kkt.burpplefoodplaces.network.Call.FoodDataAgentImpl;
+import xyz.kkt.burpplefoodplaces.network.call.FoodDataAgent;
+import xyz.kkt.burpplefoodplaces.network.call.FoodDataAgentImpl;
 import xyz.kkt.burpplefoodplaces.persistence.BurppleContract;
 import xyz.kkt.burpplefoodplaces.utils.AppConstants;
 import xyz.kkt.burpplefoodplaces.utils.ConfigUtils;
@@ -29,26 +31,32 @@ import xyz.kkt.burpplefoodplaces.utils.ConfigUtils;
 
 public class BurppleModel {
 
-    private static BurppleModel objInstance;
-    private FoodDataAgentImpl mDataAgent;
-    private List<PromotionVO> mPromotionList;
-    private List<FeaturedVO> mFeaturedList;
-    private List<GuideVO> mGuideList;
+    //private static BurppleModel objInstance;
+//    private List<PromotionVO> mPromotionList;
+//    private List<FeaturedVO> mFeaturedList;
+//    private List<GuideVO> mGuideList;
 
-    private BurppleModel() {
+    @Inject
+    FoodDataAgent mDataAgent;
+
+    @Inject
+    ConfigUtils mConfigUtils;
+
+    public BurppleModel(Context context) {
         EventBus.getDefault().register(this);
-        mDataAgent = FoodDataAgentImpl.getInstance();
-        mPromotionList = new ArrayList<>();
-        mGuideList = new ArrayList<>();
-        mFeaturedList = new ArrayList<>();
+        BurppleApp burppleApp = (BurppleApp) context;
+        burppleApp.getBurppleAppComponent().inject(this);
+//        mPromotionList = new ArrayList<>();
+//        mGuideList = new ArrayList<>();
+//        mFeaturedList = new ArrayList<>();
     }
 
-    public static BurppleModel getInstance() {
-        if (objInstance == null) {
-            objInstance = new BurppleModel();
-        }
-        return objInstance;
-    }
+//    public static BurppleModel getInstance() {
+//        if (objInstance == null) {
+//            objInstance = new BurppleModel();
+//        }
+//        return objInstance;
+//    }
 
     public void startLoadingFood(Context context) {
         startLoadingPromotion(context);
@@ -57,56 +65,56 @@ public class BurppleModel {
     }
 
     public void startLoadingPromotion(Context context) {
-        mDataAgent.loadPromotion(AppConstants.ACCESS_TOKEN, ConfigUtils.getObjInstance().loadProPageIndex(), context);
+        mDataAgent.loadPromotion(AppConstants.ACCESS_TOKEN, mConfigUtils.loadProPageIndex(), context);
     }
 
     public void startLoadingGuide(Context context) {
-        mDataAgent.loadGuide(AppConstants.ACCESS_TOKEN, ConfigUtils.getObjInstance().loadGuiPageIndex(), context);
+        mDataAgent.loadGuide(AppConstants.ACCESS_TOKEN, mConfigUtils.loadGuiPageIndex(), context);
     }
 
     public void startLoadingFeatured(Context context) {
-        mDataAgent.loadFeatured(AppConstants.ACCESS_TOKEN, ConfigUtils.getObjInstance().loadFeaPageIndex(), context);
+        mDataAgent.loadFeatured(AppConstants.ACCESS_TOKEN, mConfigUtils.loadFeaPageIndex(), context);
     }
 
     public void loadMorePromotion(Context context) {
-        int pageIndex = ConfigUtils.getObjInstance().loadProPageIndex();
+        int pageIndex = mConfigUtils.loadProPageIndex();
         mDataAgent.loadPromotion(AppConstants.ACCESS_TOKEN, pageIndex, context);
     }
 
     public void loadMoreGuide(Context context) {
-        int pageIndex = ConfigUtils.getObjInstance().loadGuiPageIndex();
+        int pageIndex = mConfigUtils.loadGuiPageIndex();
         mDataAgent.loadGuide(AppConstants.ACCESS_TOKEN, pageIndex, context);
     }
 
     public void loadMoreFeatured(Context context) {
-        int pageIndex = ConfigUtils.getObjInstance().loadFeaPageIndex();
+        int pageIndex = mConfigUtils.loadFeaPageIndex();
         mDataAgent.loadFeatured(AppConstants.ACCESS_TOKEN, pageIndex, context);
     }
 
     public void forceRefreshPromotion(Context context) {
-        mPromotionList = new ArrayList<>();
-        ConfigUtils.getObjInstance().saveProPageIndex(1);
+        //mPromotionList = new ArrayList<>();
+        mConfigUtils.saveProPageIndex(1);
         startLoadingPromotion(context);
     }
 
     public void forceRefreshGuide(Context context) {
-        mGuideList = new ArrayList<>();
-        ConfigUtils.getObjInstance().saveGuiPageIndex(1);
+        // mGuideList = new ArrayList<>();
+        mConfigUtils.saveGuiPageIndex(1);
         startLoadingGuide(context);
     }
 
 
     public void forceRefreshFeatured(Context context) {
-        mFeaturedList = new ArrayList<>();
-        ConfigUtils.getObjInstance().saveFeaPageIndex(1);
+        // mFeaturedList = new ArrayList<>();
+        mConfigUtils.saveFeaPageIndex(1);
         startLoadingFeatured(context);
     }
 
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onPromotionDataLoaded(RestApiEvents.PromotionDataLoadedEvent event) {
-        ConfigUtils.getObjInstance().saveProPageIndex(event.getLoadedPageIndex() + 1);
-        mPromotionList.addAll(event.getLoadPromotion());
+        mConfigUtils.saveProPageIndex(event.getLoadedPageIndex() + 1);
+        // mPromotionList.addAll(event.getLoadPromotion());
 
         ContentValues[] promotionCVs = new ContentValues[event.getLoadPromotion().size()];
         List<ContentValues> promotionShopCVList = new ArrayList<>();
@@ -144,8 +152,8 @@ public class BurppleModel {
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onFeaturedDataLoaded(RestApiEvents.FeaturedDataLoadedEvent event) {
-        ConfigUtils.getObjInstance().saveFeaPageIndex(event.getLoadedPageIndex() + 1);
-        mFeaturedList.addAll(event.getLoadFeatured());
+        mConfigUtils.saveFeaPageIndex(event.getLoadedPageIndex() + 1);
+        //mFeaturedList.addAll(event.getLoadFeatured());
 
         ContentValues[] featuredCVs = new ContentValues[event.getLoadFeatured().size()];
 
@@ -163,8 +171,8 @@ public class BurppleModel {
 
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onGuideDataLoaded(RestApiEvents.GuideDataLoadedEvent event) {
-        ConfigUtils.getObjInstance().saveGuiPageIndex(event.getLoadedPageIndex() + 1);
-        mGuideList.addAll(event.getLoadGuide());
+        mConfigUtils.saveGuiPageIndex(event.getLoadedPageIndex() + 1);
+        //mGuideList.addAll(event.getLoadGuide());
 
         ContentValues[] guideCVs = new ContentValues[event.getLoadGuide().size()];
 
@@ -179,15 +187,15 @@ public class BurppleModel {
 
     }
 
-    public List<PromotionVO> getmPromotionList() {
-        return mPromotionList;
-    }
-
-    public List<FeaturedVO> getmFeaturedList() {
-        return mFeaturedList;
-    }
-
-    public List<GuideVO> getmGuideList() {
-        return mGuideList;
-    }
+//    public List<PromotionVO> getmPromotionList() {
+//        return mPromotionList;
+//    }
+//
+//    public List<FeaturedVO> getmFeaturedList() {
+//        return mFeaturedList;
+//    }
+//
+//    public List<GuideVO> getmGuideList() {
+//        return mGuideList;
+//    }
 }

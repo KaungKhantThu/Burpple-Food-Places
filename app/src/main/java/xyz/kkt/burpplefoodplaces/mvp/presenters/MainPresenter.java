@@ -3,11 +3,12 @@ package xyz.kkt.burpplefoodplaces.mvp.presenters;
 import android.content.Context;
 import android.database.Cursor;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import xyz.kkt.burpplefoodplaces.BurppleApp;
 import xyz.kkt.burpplefoodplaces.data.model.BurppleModel;
 import xyz.kkt.burpplefoodplaces.data.vos.FeaturedVO;
 import xyz.kkt.burpplefoodplaces.data.vos.GuideVO;
@@ -20,6 +21,9 @@ import xyz.kkt.burpplefoodplaces.mvp.views.MainView;
 
 public class MainPresenter extends BasePresenter<MainView> {
 
+    @Inject
+    BurppleModel mBurppleModel;
+
     public MainPresenter() {
 
     }
@@ -27,14 +31,14 @@ public class MainPresenter extends BasePresenter<MainView> {
     @Override
     public void onCreate(MainView view) {
         super.onCreate(view);
-//        SFCNewsApp sfcNewsApp = (SFCNewsApp) mView.getContext();
-//        sfcNewsApp.getSFCAppComponent().inject(this);
+        BurppleApp burppleApp = (BurppleApp) mView.getContext();
+        burppleApp.getBurppleAppComponent().inject(this);
     }
 
     @Override
     public void onStart() {
 //        EventBus.getDefault().register(this);
-        BurppleModel.getInstance().startLoadingFood(mView.getContext());
+        mBurppleModel.startLoadingFood(mView.getContext());
     }
 
     @Override
@@ -43,11 +47,11 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void onProListEndReach(Context context) {
-        BurppleModel.getInstance().loadMorePromotion(mView.getContext());
+        mBurppleModel.loadMorePromotion(mView.getContext());
     }
 
     public void onGuiListEndReach(Context context) {
-        BurppleModel.getInstance().loadMoreGuide(mView.getContext());
+        mBurppleModel.loadMoreGuide(mView.getContext());
     }
 
 //    public void onForceRefresh(Context context) {

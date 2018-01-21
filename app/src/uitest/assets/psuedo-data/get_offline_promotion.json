@@ -1,0 +1,188 @@
+{
+    "code": 200,
+    "message": "success",
+    "apiVersion": "v1",
+    "page": "1",
+    "promotions": [
+        {
+            "burpple-promotion-id": "promo1",
+            "burpple-promotion-image": "http://attach.getjetso.com/forum/attachments/month_1602/20160222_7fbca09650ce943ac470AQ5OZ5.jpg",
+            "burpple-promotion-title": "1-for-1 Shabu Burger",
+            "burpple-promotion-until": "2018-1-31T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop01",
+                "burpple-shop-name": "Wildfire Chicken & Burgers",
+                "burpple-shop-area": "Hleden"
+            },
+            "is-burpple-exclusive": true,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo2",
+            "burpple-promotion-image": "https://upload.brickinc.net/chainfiles/285/creative/201510/635793829861565202-paylessweeklyad.jpg",
+            "burpple-promotion-title": "20% Off Total Bill",
+            "burpple-promotion-until": "2018-1-31T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop02",
+                "burpple-shop-name": "IndoChill (Savourworld)",
+                "burpple-shop-area": "Ahlone"
+            },
+            "is-burpple-exclusive": true,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo3",
+            "burpple-promotion-image": "https://truffle-assets.imgix.net/67ce1315-104-icecream-dishland2.jpg",
+            "burpple-promotion-title": "1-for-1 Scoop",
+            "burpple-promotion-until": "2018-1-16T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop03",
+                "burpple-shop-name": "Licktionary",
+                "burpple-shop-area": "Myanmar Plaza"
+            },
+            "is-burpple-exclusive": true,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo4",
+            "burpple-promotion-image": "https://www.goodfood.com.au/content/dam/images/1/3/6/y/4/n/image.related.articleLeadwide.620x349.gvc5ec.png/1491217436472.jpg",
+            "burpple-promotion-title": "1-for-1 Chilli Pomelo Crab Xiao Long Bao",
+            "burpple-promotion-until": "2018-1-24T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop04",
+                "burpple-shop-name": "Blue Lotus",
+                "burpple-shop-area": "9-Mile Ocean"
+            },
+            "is-burpple-exclusive": true,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo5",
+            "burpple-promotion-image": "https://www.justonecookbook.com/wp-content/uploads/2012/03/Quick-Easy-Chirashi-Sushi-III.jpg",
+            "burpple-promotion-title": "1-for-1 Bara Chirashi",
+            "burpple-promotion-until": "2018-2-06T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop05",
+                "burpple-shop-name": "Tokyo Joe",
+                "burpple-shop-area": "Tawin Centre"
+            },
+            "is-burpple-exclusive": true,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo6",
+            "burpple-promotion-image": "https://i.ytimg.com/vi/mMoYS80MiFc/maxresdefault.jpg",
+            "burpple-promotion-title": "1-for-1 Doner Chicken Sandwish",
+            "burpple-promotion-until": "2018-1-31T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop06",
+                "burpple-shop-name": "Ottoman Kebab & Grill",
+                "burpple-shop-area": "St. John City Mall"
+            },
+            "is-burpple-exclusive": false,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo7",
+            "burpple-promotion-image": "http://smokeybones.com/wp-content/uploads/2017/10/southern-brunch-product.jpg",
+            "burpple-promotion-title": "1-for-1 Brunch",
+            "burpple-promotion-until": "2018-2-15T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop07",
+                "burpple-shop-name": "Xiao Ya Tou",
+                "burpple-shop-area": "Junction City"
+            },
+            "is-burpple-exclusive": false,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo8",
+            "burpple-promotion-image": "https://pixel.nymag.com/imgs/daily/grub/2015/04/08/raclette-suisse2.w710.h473.jpg",
+            "burpple-promotion-title": "Free Melted Raclette",
+            "burpple-promotion-until": "2018-1-29T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop08",
+                "burpple-shop-name": "The BetterField",
+                "burpple-shop-area": "Junction Mawtin"
+            },
+            "is-burpple-exclusive": true,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo9",
+            "burpple-promotion-image": "https://www.koreanbbqshop.com/wp-content/uploads/2016/06/Exotic-Dinner-Kits-DIY-Cooking-From-Around-the-World-0-4.jpg",
+            "burpple-promotion-title": "15% Off Total Bill",
+            "burpple-promotion-until": "2018-1-31T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop09",
+                "burpple-shop-name": "Noodle Thai Thai Kitchen",
+                "burpple-shop-area": "Tarmwe Ocean"
+            },
+            "is-burpple-exclusive": true,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        },
+        {
+            "burpple-promotion-id": "promo10",
+            "burpple-promotion-image": "https://www.peta.org/wp-content/uploads/2013/08/avocado-chickpea-sandwich.jpg",
+            "burpple-promotion-title": "25% Off Second Sandwich",
+            "burpple-promotion-until": "2018-1-24T23:59:59.000Z",
+            "burpple-promotion-shop": {
+                "burpple-shop-id": "shop10",
+                "burpple-shop-name": "52 Sandwich Shack",
+                "burpple-shop-area": "Botahtaung Mall"
+            },
+            "is-burpple-exclusive": false,
+            "burpple-promotion-terms": [
+                "By participating in promotions, participants agree to be bound by these and promotional specific Terms and Conditions which are in conjunction with Coral normal full rules, Terms and Conditions.",
+                "We may at our absolute discretion restrict who may enter into promotions for any reason. Employees of the promoter, any advertising agency or web company connected with the promoter or any such person's subsidiary or associated companies, agents or members of their families or households, are not eligible to participate in promotions. The promoter reserves the right to verify the eligibility of all participants.",
+                "Any participant found to be operating multiple accounts in promotions will be in breach of these and general account terms and the promoter will determine at its sole discretion by whatever means it deems necessary to establish if different entries or accounts are connected to the same person. Bonus offers are limited to one bonus per person, household and/or computer, and/or payment method unless otherwise stated.",
+                "Participants, whether individually or acting in a group, will be found to be in breach of these and promotional specific terms if the promoter at its sole discretion has reason to believe that a promotion has been abused, manipulated, or that irregular, fraudulent, collusive or illegal activity has occurred."
+            ]
+        }
+    ]
+}

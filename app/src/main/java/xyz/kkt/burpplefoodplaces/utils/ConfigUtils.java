@@ -15,19 +15,19 @@ public class ConfigUtils {
 
     private SharedPreferences mSharedPreferences;
 
-    private static ConfigUtils sObjInstance;
+//    private static ConfigUtils sObjInstance;
 
-    private ConfigUtils(Context context) {
+    public ConfigUtils(Context context) {
         mSharedPreferences = context.getSharedPreferences("ConfigUtils", Context.MODE_PRIVATE);
     }
 
-    public static void initConfigUtils(Context context) {
-        sObjInstance = new ConfigUtils(context);
-    }
-
-    public static ConfigUtils getObjInstance() {
-        return sObjInstance;
-    }
+//    public static void initConfigUtils(Context context) {
+//        sObjInstance = new ConfigUtils(context);
+//    }
+//
+//    public static ConfigUtils getObjInstance() {
+//        return sObjInstance;
+//    }
 
     public void saveProPageIndex(int pageIndex) {
         mSharedPreferences.edit().putInt(PROMOTION_KEY_PAGE_INDEX, pageIndex).apply();

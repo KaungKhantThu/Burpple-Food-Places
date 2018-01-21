@@ -1,0 +1,43 @@
+{
+    "code": 200,
+    "message": "success",
+    "apiVersion": "v1",
+    "page": "1",
+    "featured": [
+        {
+            "burpple-featured-id": "f01",
+            "burpple-featured-image": "http://www.yelpblog.com/wp-content/uploads/2016/02/6a00d83452b44469e201b8d19d2b78970c.jpg",
+            "burpple-featured-title": "Have Some Cakes",
+            "burpple-featured-desc": "The cakes you CANNOT live without",
+            "burpple-featured-tag": "cakes"
+        },
+        {
+            "burpple-featured-id": "f02",
+            "burpple-featured-image": "http://static4.businessinsider.com/image/582211bd691e88014a8b4b07-1190-625/here-are-all-the-places-you-can-get-free-food-for-voting.jpg",
+            "burpple-featured-title": "Yummy Donuts",
+            "burpple-featured-desc": "Something to chew for your soul",
+            "burpple-featured-tag": "donuts"
+        },
+        {
+            "burpple-featured-id": "f03",
+            "burpple-featured-image": "http://jfwonline.com/wp-content/uploads/2016/05/India-Food-JFW-magazine.jpg",
+            "burpple-featured-title": "Indian Delights",
+            "burpple-featured-desc": "Eat All You CAN",
+            "burpple-featured-tag": "indian"
+        },
+        {
+            "burpple-featured-id": "f04",
+            "burpple-featured-image": "http://www.muchmorocco.com/wp-content/uploads/2015/02/rabat-food_000041068778_Large.jpg",
+            "burpple-featured-title": "African Exotic",
+            "burpple-featured-desc": "The taste of North Africans",
+            "burpple-featured-tag": "exotic"
+        },
+        {
+            "burpple-featured-id": "f05",
+            "burpple-featured-image": "https://igx.4sqi.net/img/general/699x268/5425134_30rmHzPf0sVPs5lrfQ7sR0WiXPdjGHBGHqDEKqaBWDY.jpg",
+            "burpple-featured-title": "Not Without Beacon",
+            "burpple-featured-desc": "Your soul transformation with a little bit of healthy bacon",
+            "burpple-featured-tag": "bacon"
+        }
+    ]
+}

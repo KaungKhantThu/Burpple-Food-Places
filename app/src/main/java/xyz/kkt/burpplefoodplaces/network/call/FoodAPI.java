@@ -1,4 +1,4 @@
-package xyz.kkt.burpplefoodplaces.network.Call;
+package xyz.kkt.burpplefoodplaces.network.call;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

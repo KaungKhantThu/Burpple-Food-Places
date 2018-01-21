@@ -26,8 +26,11 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import xyz.kkt.burpplefoodplaces.BurppleApp;
 import xyz.kkt.burpplefoodplaces.R;
 import xyz.kkt.burpplefoodplaces.adapters.GuideAdapter;
 import xyz.kkt.burpplefoodplaces.adapters.HeroViewPagerAdapter;
@@ -73,11 +76,13 @@ public class MainActivity extends BaseActivity implements LoaderManager.LoaderCa
     private GuideAdapter mGuideAdapter;
     //private NewAndTrendingAdapter mNewAndTrendingAdapter;
     private HeroViewPagerAdapter mHeroViewPagerAdapter;
-    private MainPresenter mPresenter;
 
     private static final int FEATURED_LIST_LOADER_ID = 1001;
     private static final int PROMOTIONS_LIST_LOADER_ID = 1002;
     private static final int GUIDES_LIST_LOADER_ID = 1003;
+
+    @Inject
+    MainPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +91,11 @@ public class MainActivity extends BaseActivity implements LoaderManager.LoaderCa
         ButterKnife.bind(this, this);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
-        mPresenter = new MainPresenter();
+//        mPresenter = new MainPresenter();
+
+        BurppleApp burppleApp = (BurppleApp) getApplicationContext();
+        burppleApp.getBurppleAppComponent().inject(this);
+
         mPresenter.onCreate(this);
 
         mHeroViewPagerAdapter = new HeroViewPagerAdapter(getApplicationContext());

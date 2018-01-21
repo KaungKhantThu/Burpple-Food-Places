@@ -1,4 +1,4 @@
-package xyz.kkt.burpplefoodplaces.network.Call;
+package xyz.kkt.burpplefoodplaces.network.call;
 
 import android.content.Context;
 
@@ -24,11 +24,11 @@ import xyz.kkt.burpplefoodplaces.network.responses.GetPromotionsResponse;
 
 public class FoodDataAgentImpl implements FoodDataAgent {
 
-    private static FoodDataAgentImpl objInstance;
+//    private static FoodDataAgentImpl objInstance;
 
     private FoodAPI theAPI;
 
-    private FoodDataAgentImpl() {
+    public FoodDataAgentImpl() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
@@ -46,12 +46,12 @@ public class FoodDataAgentImpl implements FoodDataAgent {
     }
 
 
-    public static FoodDataAgentImpl getInstance() {
-        if (objInstance == null) {
-            objInstance = new FoodDataAgentImpl();
-        }
-        return objInstance;
-    }
+//    public static FoodDataAgentImpl getInstance() {
+//        if (objInstance == null) {
+//            objInstance = new FoodDataAgentImpl();
+//        }
+//        return objInstance;
+//    }
 
 
     @Override

@@ -1,0 +1,44 @@
+{
+  "code": 200,
+  "message": "success",
+  "apiVersion": "v1",
+  "page": "1",
+  "featured": [
+    {
+      "burpple-guide-id": "guide01",
+      "burpple-guide-image": "http://l7.alamy.com/zooms/63eee6fc08984db1a35482f0d6a826d0/maxwell-food-centre-chinatown-singapore-bn56yg.jpg",
+      "burpple-guide-title": "Tastemakers Guide to Best Hawkers in Chinatown",
+      "burpple-guide-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "burpple-guide-id": "guide02",
+      "burpple-guide-image": "https://gbg-5e0f.kxcdn.com/wp-content/uploads/2014/11/Kunming-cycle-streetfood-bbq-780x464.jpg",
+      "burpple-guide-title": "Best Places for BBQ & Grills in Yangon 2017",
+      "burpple-guide-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "burpple-guide-id": "guide03",
+      "burpple-guide-image": "https://www.myanmore.com/yangon/wp-content/uploads/sites/2/2017/10/21055993_231213290736792_7681816185998173280_o.jpg",
+      "burpple-guide-title": "New Restaurants, Cafes and Bars in Yangon : December 2017",
+      "burpple-guide-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "burpple-guide-id": "guide04",
+      "burpple-guide-image": "https://travel.jumia.com/blog/mm/wp-content/uploads/2017/03/Untitled-1-2-660x372.jpg",
+      "burpple-guide-title": "Best Places for Hot Pot in Yangon : 2017",
+      "burpple-guide-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "burpple-guide-id": "guide05",
+      "burpple-guide-image": "http://sg.asia-city.com/sites/default/files/imagecache/item_image/seah_im_laksa_auntie.jpg",
+      "burpple-guide-title": "Seah Im Food Center",
+      "burpple-guide-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "burpple-guide-id": "guide06",
+      "burpple-guide-image": "https://1.bp.blogspot.com/-wLAoy-9pjtU/WH24ZaUSSiI/AAAAAAAASKw/yQF-Fcc0sM4cDyC8a-6sx_ecLKKfpQlvACLcB/s640/club_5_music_yangon_parkroyal.jpg",
+      "burpple-guide-title": "HOT after-hour places in Yangon",
+      "burpple-guide-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+  ]
+}
